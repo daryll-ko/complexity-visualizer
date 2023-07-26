@@ -4,10 +4,11 @@ function factorial(n: number): number {
   return n === 0 ? 1 : n * factorial(n - 1);
 }
 
-export default function makeRow(clockRate: number): Device {
+export default function makeRow(deviceName: string, clockRate: number): Device {
   const n = 10;
 
   return {
+    deviceName,
     constant: 1 / clockRate,
     log: Math.log2(n) / clockRate,
     root: Math.sqrt(n) / clockRate,
