@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { InlineMath } from "react-katex";
 import makeRow from "~/lib/makeRow";
+import TimeDisplay from "./TimeDisplay";
 
 interface DeviceInfo {
   name: string;
@@ -16,15 +17,15 @@ interface DeviceInfo {
 
 export interface Device {
   info: DeviceInfo;
-  constant: string;
-  log: string;
-  root: string;
-  linear: string;
-  loglinear: string;
-  quadratic: string;
-  cubic: string;
-  exponential: string;
-  factorial: string;
+  constant: number;
+  log: number;
+  root: number;
+  linear: number;
+  loglinear: number;
+  quadratic: number;
+  cubic: number;
+  exponential: number;
+  factorial: number;
 }
 
 interface Props {
@@ -95,39 +96,39 @@ export default function Table({ n }: Props) {
       header: () => <span>Device Name</span>,
     }),
     columnHelper.accessor("constant", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(1)" />,
     }),
     columnHelper.accessor("log", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(\lg n)" />,
     }),
     columnHelper.accessor("root", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(\sqrt{n})" />,
     }),
     columnHelper.accessor("linear", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(n)" />,
     }),
     columnHelper.accessor("loglinear", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(n\lg n)" />,
     }),
     columnHelper.accessor("quadratic", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(n^{2})" />,
     }),
     columnHelper.accessor("cubic", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(n^{3})" />,
     }),
     columnHelper.accessor("exponential", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(2^{n})" />,
     }),
     columnHelper.accessor("factorial", {
-      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
+      cell: (info) => <TimeDisplay seconds={info.getValue()} />,
       header: () => <InlineMath math="\Theta(n!)" />,
     }),
   ];

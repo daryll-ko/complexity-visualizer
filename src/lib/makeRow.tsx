@@ -24,21 +24,19 @@ export default function makeRow(
   clockRate: number,
   n: number
 ): Device {
-  const p = 3;
-
   return {
     info: {
       name,
       link,
     },
-    constant: (1 / clockRate).toPrecision(p),
-    log: (Math.log2(n) / clockRate).toPrecision(p),
-    root: (Math.sqrt(n) / clockRate).toPrecision(p),
-    linear: (n / clockRate).toPrecision(p),
-    loglinear: ((n * Math.log2(n)) / clockRate).toPrecision(p),
-    quadratic: ((n * n) / clockRate).toPrecision(p),
-    cubic: ((n * n * n) / clockRate).toPrecision(p),
-    exponential: (safePow(n) / clockRate).toPrecision(p),
-    factorial: (factorial(n) / clockRate).toPrecision(p),
+    constant: 1 / clockRate,
+    log: Math.log2(n) / clockRate,
+    root: Math.sqrt(n) / clockRate,
+    linear: n / clockRate,
+    loglinear: (n * Math.log2(n)) / clockRate,
+    quadratic: (n * n) / clockRate,
+    cubic: (n * n * n) / clockRate,
+    exponential: safePow(n) / clockRate,
+    factorial: factorial(n) / clockRate,
   };
 }
