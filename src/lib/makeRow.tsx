@@ -21,14 +21,18 @@ function safePow(n: number): number {
 }
 
 export default function makeRow(
-  deviceName: string,
+  name: string,
+  link: string,
   clockRate: number,
   n: number
 ): Device {
   const p = 3;
 
   return {
-    deviceName,
+    info: {
+      name,
+      link,
+    },
     constant: (1 / clockRate).toPrecision(p),
     log: (Math.log2(n) / clockRate).toPrecision(p),
     root: (Math.sqrt(n) / clockRate).toPrecision(p),

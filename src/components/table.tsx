@@ -4,12 +4,18 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
+import Link from "next/link";
 import { useMemo } from "react";
 import { InlineMath } from "react-katex";
 import makeRow from "~/lib/makeRow";
 
+interface DeviceInfo {
+  name: string;
+  link: string;
+}
+
 export interface Device {
-  deviceName: string;
+  info: DeviceInfo;
   constant: string;
   log: string;
   root: string;
@@ -28,13 +34,48 @@ interface Props {
 export default function Table({ n }: Props) {
   const makeData = (n: number): Device[] => {
     return [
-      makeRow("Arduino Uno (16 MHz)", 16000000, n),
-      makeRow("Nintendo DS (67 MHz)", 67000000, n),
-      makeRow("Nintendo 3DS (268 MHz)", 268000000, n),
-      makeRow("Apple Watch (520 MHz)", 520000000, n),
-      makeRow("Nintendo Switch (1.02 GHz)", 1020000000, n),
-      makeRow("Macbook Pro M1 (3.2 GHz)", 3200000000, n),
-      makeRow("PlayStation 5 (3.5 GHz)", 3500000000, n),
+      makeRow(
+        "Arduino Uno (16 MHz)",
+        "https://linuxhint.com/arduino-uno-working-frequency/",
+        16000000,
+        n
+      ),
+      makeRow(
+        "Nintendo DS (67 MHz)",
+        "https://en.wikipedia.org/wiki/Nintendo_DS",
+        67000000,
+        n
+      ),
+      makeRow(
+        "Nintendo 3DS (268 MHz)",
+        "https://en.wikipedia.org/wiki/Nintendo_3DS",
+        268000000,
+        n
+      ),
+      makeRow(
+        "Apple Watch (520 MHz)",
+        "https://en.wikipedia.org/wiki/Apple_S1",
+        520000000,
+        n
+      ),
+      makeRow(
+        "Nintendo Switch (1.02 GHz)",
+        "https://en.wikipedia.org/wiki/Nintendo_Switch",
+        1020000000,
+        n
+      ),
+      makeRow(
+        "Macbook Pro M1 (3.2 GHz)",
+        "https://en.wikipedia.org/wiki/Apple_M1",
+        3200000000,
+        n
+      ),
+      makeRow(
+        "PlayStation 5 (3.5 GHz)",
+        "https://www.theverge.com/2020/3/18/21183181/sony-ps5-playstation-5-specs-details-hardware-processor-8k-ray-tracing",
+        3500000000,
+        n
+      ),
     ];
   };
 
@@ -43,44 +84,50 @@ export default function Table({ n }: Props) {
   const columnHelper = createColumnHelper<Device>();
 
   const columns = [
-    columnHelper.accessor("deviceName", {
-      cell: (info) => info.getValue(),
+    columnHelper.accessor("info", {
+      cell: (info) => (
+        <Link href={info.getValue().link}>
+          <div className="px-2 py-1 hover:bg-white/20">
+            {info.getValue().name}
+          </div>
+        </Link>
+      ),
       header: () => <span>Device Name</span>,
     }),
     columnHelper.accessor("constant", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(1)" />,
     }),
     columnHelper.accessor("log", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(\lg n)" />,
     }),
     columnHelper.accessor("root", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(\sqrt{n})" />,
     }),
     columnHelper.accessor("linear", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(n)" />,
     }),
     columnHelper.accessor("loglinear", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(n\lg n)" />,
     }),
     columnHelper.accessor("quadratic", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(n^{2})" />,
     }),
     columnHelper.accessor("cubic", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(n^{3})" />,
     }),
     columnHelper.accessor("exponential", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(2^{n})" />,
     }),
     columnHelper.accessor("factorial", {
-      cell: (info) => info.getValue(),
+      cell: (info) => <div className="px-2 py-1">{info.getValue()}</div>,
       header: () => <InlineMath math="\Theta(n!)" />,
     }),
   ];
@@ -92,7 +139,7 @@ export default function Table({ n }: Props) {
   });
 
   return (
-    <table className="border border-solid border-white">
+    <table>
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -116,10 +163,7 @@ export default function Table({ n }: Props) {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td
-                key={cell.id}
-                className="border border-solid border-white p-2"
-              >
+              <td key={cell.id} className="border border-solid border-white">
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
