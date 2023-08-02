@@ -1,4 +1,4 @@
-import { type Device } from "~/components/table";
+import { type Device } from "~/components/Table";
 
 function factorial(n: number): number {
   if (n > 100) {

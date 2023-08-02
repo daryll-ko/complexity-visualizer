@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import { BlockMath, InlineMath } from "react-katex";
-import Table from "~/components/table";
+import Table from "~/components/Table";
 
 export default function Home() {
   const [n, setN] = useState("1000");
