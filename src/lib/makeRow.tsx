@@ -1,8 +1,7 @@
 import { type Device } from "~/components/table";
 
 function factorial(n: number): number {
-  return 1;
-  if (n >= 100) {
+  if (n > 100) {
     return Infinity;
   }
   let res = 1;
@@ -13,8 +12,7 @@ function factorial(n: number): number {
 }
 
 function safePow(n: number): number {
-  return 1;
-  if (n >= 100) {
+  if (n > 1000) {
     return Infinity;
   }
   return Math.pow(2, n);
