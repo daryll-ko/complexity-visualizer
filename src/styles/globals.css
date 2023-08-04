@@ -7,3 +7,7 @@
     @apply border border-solid border-white sm:border-yellow-500 md:border-green-500 lg:border-cyan-500 xl:border-pink-500 2xl:border-orange-500;
   }
 }
+
+body {
+  @apply dark:bg-black;
+}
