@@ -7,9 +7,9 @@ import {
 import Link from "next/link";
 import { useMemo } from "react";
 import { InlineMath } from "react-katex";
-import makeRow from "~/lib/makeRow";
+import makeRow from "../lib/makeRow";
 import TimeDisplay from "./TimeDisplay";
-import type Device from "~/types/Device";
+import type Device from "../types/Device";
 
 interface Props {
   n: number;

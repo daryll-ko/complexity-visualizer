@@ -1,4 +1,4 @@
-import type Device from "~/types/Device";
+import type Device from "../types/Device";
 
 function factorial(n: number): number {
   if (n > 100) {
