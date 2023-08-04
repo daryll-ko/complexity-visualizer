@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import { BlockMath, InlineMath } from "react-katex";
+import { InlineMath } from "react-katex";
 import Table from "~/components/Table";
 
 export default function Home() {
@@ -14,8 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-black text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-xl font-bold tracking-tight text-white sm:text-[5rem]">
+        <div className="container flex flex-col items-center justify-center gap-10 px-4 py-16">
+          <h1 className="text-5xl font-bold tracking-tight text-white">
             Complexity
           </h1>
           <p>
@@ -31,9 +31,7 @@ export default function Home() {
             />
             ?
           </p>
-          <div>
-            <BlockMath math="\text{time (s)} = f(n)~\text{instructions} \times \dfrac{1~\text{cycle}}{\text{instruction}} \div \text{clock rate}" />
-          </div>
+          <InlineMath math="\text{time (s)} = f(n)~\text{instructions} \times \dfrac{1~\text{cycle}}{\text{instruction}} \div \text{clock rate}" />
           <Table n={Number(n)} />
           <div>
             <p className="mb-1 font-bold">Notes</p>
@@ -60,6 +58,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
+          <footer>© 2023 UPD ACLAB. Made by Daryll Ko.</footer>
         </div>
       </main>
     </>
