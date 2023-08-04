@@ -9,24 +9,7 @@ import { useMemo } from "react";
 import { InlineMath } from "react-katex";
 import makeRow from "~/lib/makeRow";
 import TimeDisplay from "./TimeDisplay";
-
-interface DeviceInfo {
-  name: string;
-  link: string;
-}
-
-export interface Device {
-  info: DeviceInfo;
-  constant: number;
-  log: number;
-  root: number;
-  linear: number;
-  loglinear: number;
-  quadratic: number;
-  cubic: number;
-  exponential: number;
-  factorial: number;
-}
+import type Device from "~/types/Device";
 
 interface Props {
   n: number;
