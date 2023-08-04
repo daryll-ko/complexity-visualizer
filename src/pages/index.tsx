@@ -48,7 +48,7 @@ export default function Home() {
                 long that even the computer can&apos;t represent it properly.
               </li>
               <li>
-                This table was inspired by Gary and Johnson&apos;s{" "}
+                This table was inspired by Garey and Johnson&apos;s{" "}
                 <a
                   href="https://en.wikipedia.org/wiki/Computers_and_Intractability"
                   className="italic underline"
