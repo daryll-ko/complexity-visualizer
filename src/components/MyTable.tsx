@@ -15,7 +15,7 @@ interface Props {
   n: number;
 }
 
-export default function Table({ n }: Props) {
+export default function MyTable({ n }: Props) {
   const makeData = (n: number): Device[] => {
     return [
       makeRow(

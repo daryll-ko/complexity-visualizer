@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import { InlineMath } from "react-katex";
-import Table from "../components/Table";
+import MyTable from "../components/MyTable";
 
 export default function Home() {
   const [n, setN] = useState("1000");
@@ -32,7 +32,7 @@ export default function Home() {
             ?
           </p>
           <InlineMath math="\text{time (s)} = f(n)~\text{instructions} \times \dfrac{1~\text{cycle}}{\text{instruction}} \div \text{clock rate}" />
-          <Table n={Number(n)} />
+          <MyTable n={Number(n)} />
           <div>
             <p className="mb-1 font-bold">Notes</p>
             <ul className="list-disc">
