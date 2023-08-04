@@ -35,16 +35,16 @@ export default function TimeDisplay({ seconds }: Props) {
   } else if (seconds >= MINUTE_IN_SECONDS) {
     value /= MINUTE_IN_SECONDS;
     unit = short ? "min(s)" : "minute(s)";
-  } else if (seconds <= PS_IN_SECONDS) {
+  } else if (seconds <= PS_IN_SECONDS * 10) {
     value *= 1000000000000;
     unit = short ? "ps" : "picosecond(s)";
-  } else if (seconds <= NS_IN_SECONDS) {
+  } else if (seconds <= NS_IN_SECONDS * 10) {
     value *= 1000000000;
     unit = short ? "ns" : "nanosecond(s)";
-  } else if (seconds <= US_IN_SECONDS) {
+  } else if (seconds <= US_IN_SECONDS * 10) {
     value *= 1000000;
     unit = short ? "μs" : "microsecond(s)";
-  } else if (seconds <= MS_IN_SECONDS) {
+  } else if (seconds <= MS_IN_SECONDS * 10) {
     value *= 1000;
     unit = short ? "ms" : "millisecond(s)";
   }
