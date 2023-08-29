@@ -18,24 +18,32 @@ export default function Home() {
           <h1 className="text-5xl font-bold tracking-tight text-white">
             Complexity
           </h1>
-          <p>
-            How long does it take these devices to do execute a{" "}
-            <InlineMath math="\Theta(f(n))" /> algorithm when{" "}
-            <InlineMath math="n =" />
-            <input
-              className="ml-2 mr-1 rounded-md px-2 py-1 text-black"
-              type="number"
-              value={n}
-              min={10}
-              onChange={(e) => setN(e.target.value)}
-            />
-            ?
-          </p>
-          <InlineMath math="\text{time (s)} = f(n)~\text{instructions} \times \dfrac{1~\text{cycle}}{\text{instruction}} \div \text{clock rate}" />
-          <MyTable n={Number(n)} />
-          <div>
+          <div className="flex flex-col items-center gap-3">
+            <p className="px-3 text-center md:px-0">
+              How long does it take these devices to do execute a{" "}
+              <InlineMath math="\Theta(f(n))" /> algorithm when{" "}
+            </p>
+            <p>
+              <InlineMath math="n =" />
+              <input
+                className="ml-2 mr-1 rounded-md px-2 py-1 text-black"
+                type="number"
+                value={n}
+                min={10}
+                onChange={(e) => setN(e.target.value)}
+              />
+              ?
+            </p>
+          </div>
+          <div className="text-sm md:text-base">
+            <InlineMath math="\text{time (s)} = f(n)~\text{instructions} \times \dfrac{1~\text{cycle}}{\text{instruction}} \div \text{clock rate}" />
+          </div>
+          <div className="max-w-full overflow-auto px-3 xl:px-0">
+            <MyTable n={Number(n)} />
+          </div>
+          <div className="px-3 md:px-0">
             <p className="mb-1 font-bold">Notes</p>
-            <ul className="list-disc">
+            <ul className="list-disc px-3">
               <li>
                 Clicking on a device&apos;s name will send you to the reference
                 used for the device&apos;s clock rate.
